@@ -7,6 +7,9 @@ const {
   syncAndSeed,
 } = require('./db/index');
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 app.use('/dist', express.static(path.join(__dirname, 'dist')));
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
 
@@ -17,6 +20,23 @@ app.get('/', (req, res, next) =>
 app.get('/api/recipes', async (req, res, next) => {
   try {
     res.send(await Recipe.findAll());
+  } catch (err) {
+    console.error(err);
+  }
+});
+
+app.post('/api/recipes', async (req, res, next) => {
+  try {
+    const { title, author, vegOrMeat, detail, imgUrl } = req.body;
+    const recipe = await Recipe.create({
+      title: title,
+      author: author,
+      vegOrMeat: vegOrMeat,
+      detail: detail,
+      imgUrl: imgUrl,
+    });
+    console.log('Recipe post:', recipe);
+    res.json(recipe);
   } catch (err) {
     console.error(err);
   }
