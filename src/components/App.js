@@ -3,6 +3,7 @@ import axios from 'axios';
 import Nav from './Nav';
 import Home from './Home';
 import Recipes from './Recipes';
+import RecipeDetail from './RecipeDetail';
 
 class App extends Component {
   constructor() {
@@ -10,8 +11,10 @@ class App extends Component {
     this.state = {
       recipes: [],
       view: 'home',
+      selectedRecipe: {},
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleSelectedRecipe = this.handleSelectedRecipe.bind(this);
   }
 
   async componentDidMount() {
@@ -24,30 +27,39 @@ class App extends Component {
   }
 
   handleClick(view) {
-    // console.log(view);
-    this.setState({ view: view });
+    this.setState({ view: view, selectedRecipe: {} });
+  }
+
+  handleSelectedRecipe(recipe) {
+    this.setState({ selectedRecipe: recipe });
   }
 
   render() {
-    //console.log(this.state.view);
-    const { recipes, view } = this.state;
-    const { handleClick } = this;
+    const { recipes, view, selectedRecipe } = this.state;
+    const { handleClick, handleSelectedRecipe } = this;
 
     let componentView;
     if (view === 'recipes') {
-      componentView = <Recipes recipes={recipes} />;
+      componentView = (
+        <Recipes
+          recipes={recipes}
+          handleSelectedRecipe={handleSelectedRecipe}
+        />
+      );
     } else if (view === 'vegetarian') {
       componentView = (
         <Recipes
           recipes={recipes.filter(
             (recipe) => recipe.vegOrMeat === 'vegetarian'
           )}
+          handleSelectedRecipe={handleSelectedRecipe}
         />
       );
     } else if (view === 'meat') {
       componentView = (
         <Recipes
           recipes={recipes.filter((recipe) => recipe.vegOrMeat === 'meat')}
+          handleSelectedRecipe={handleSelectedRecipe}
         />
       );
     } else {
@@ -59,6 +71,11 @@ class App extends Component {
         <Nav handleClick={handleClick} />
         <h1>You Don't Need a Recipe</h1>
         {componentView}
+        {selectedRecipe.id ? (
+          <RecipeDetail selectedRecipe={selectedRecipe} />
+        ) : (
+          <></>
+        )}
       </div>
     );
   }

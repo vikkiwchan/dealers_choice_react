@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleRecipe from './SingleRecipe';
 
-const Recipes = ({ recipes }) => {
+const Recipes = ({ recipes, handleSelectedRecipe }) => {
   return (
     <div id='recipes'>
       <table>
@@ -9,11 +9,15 @@ const Recipes = ({ recipes }) => {
           <tr>
             <th>Title</th>
             <th>Type</th>
-            <th>The "No-Recipe" Recipe</th>
+            <th>View</th>
             <th>Remove</th>
           </tr>
           {recipes.map((recipe) => (
-            <SingleRecipe key={recipe.id} recipe={recipe} />
+            <SingleRecipe
+              key={recipe.id}
+              recipe={recipe}
+              handleSelectedRecipe={handleSelectedRecipe}
+            />
           ))}
         </tbody>
       </table>
