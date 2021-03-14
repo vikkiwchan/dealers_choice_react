@@ -14,6 +14,9 @@ const UploadRecipe = () => {
         <label htmlFor='vegOrMeat'>Vegetarian or Meat:</label>
         <input name='vegOrMeat' type='text' />
 
+        <label htmlFor='detail'>How-To</label>
+        <input name='detail' type='text' />
+
         <label htmlFor='imageUrl'>Image URL:</label>
         <input name='imageUrl' type='text' />
         <div>
