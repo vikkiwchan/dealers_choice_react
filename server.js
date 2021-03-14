@@ -35,7 +35,6 @@ app.post('/api/recipes', async (req, res, next) => {
       detail: detail,
       imgUrl: imgUrl,
     });
-    console.log('Recipe post:', recipe);
     res.json(recipe);
   } catch (err) {
     console.error(err);
