@@ -41,6 +41,17 @@ app.post('/api/recipes', async (req, res, next) => {
   }
 });
 
+app.delete('/api/recipes/:id', async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    const recipe = await Recipe.findByPk(id);
+    await recipe.destroy();
+    return res.sendStatus(204);
+  } catch (err) {
+    console.error(err);
+  }
+});
+
 const init = async () => {
   try {
     await db.authenticate();

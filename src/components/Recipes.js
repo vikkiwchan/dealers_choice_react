@@ -1,7 +1,7 @@
 import React from 'react';
 import SingleRecipe from './SingleRecipe';
 
-const Recipes = ({ recipes, handleSelectedRecipe }) => {
+const Recipes = ({ recipes, handleSelectedRecipe, handleDelete }) => {
   return (
     <div id='recipes'>
       <table>
@@ -17,6 +17,7 @@ const Recipes = ({ recipes, handleSelectedRecipe }) => {
               key={recipe.id}
               recipe={recipe}
               handleSelectedRecipe={handleSelectedRecipe}
+              handleDelete={handleDelete}
             />
           ))}
         </tbody>

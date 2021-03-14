@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SingleRecipe = ({ recipe, handleSelectedRecipe }) => {
+const SingleRecipe = ({ recipe, handleSelectedRecipe, handleDelete }) => {
   return (
     <tr key={recipe.id}>
       <td>{recipe.title}</td>
@@ -11,7 +11,7 @@ const SingleRecipe = ({ recipe, handleSelectedRecipe }) => {
         </a>
       </td>
       <td>
-        <button>x</button>
+        <button onClick={() => handleDelete(recipe.id)}>x</button>
       </td>
     </tr>
   );

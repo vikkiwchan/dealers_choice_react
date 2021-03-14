@@ -16,6 +16,7 @@ class App extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleSelectedRecipe = this.handleSelectedRecipe.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   async componentDidMount() {
@@ -38,10 +39,19 @@ class App extends Component {
   //create user
 
   //delete user
+  async handleDelete(id) {
+    try {
+      await axios.delete(`/api/recipes/${id}`);
+      const recipes = (await axios.get('/api/recipes')).data;
+      this.setState({ recipes: recipes });
+    } catch (err) {
+      console.log(err);
+    }
+  }
 
   render() {
     const { recipes, view, selectedRecipe } = this.state;
-    const { handleClick, handleSelectedRecipe } = this;
+    const { handleClick, handleSelectedRecipe, handleDelete } = this;
 
     let componentView;
     if (view === 'recipes') {
@@ -49,6 +59,7 @@ class App extends Component {
         <Recipes
           recipes={recipes}
           handleSelectedRecipe={handleSelectedRecipe}
+          handleDelete={handleDelete}
         />
       );
     } else if (view === 'vegetarian') {
@@ -58,6 +69,7 @@ class App extends Component {
             (recipe) => recipe.vegOrMeat === 'vegetarian'
           )}
           handleSelectedRecipe={handleSelectedRecipe}
+          handleDelete={handleDelete}
         />
       );
     } else if (view === 'meat') {
@@ -65,6 +77,7 @@ class App extends Component {
         <Recipes
           recipes={recipes.filter((recipe) => recipe.vegOrMeat === 'meat')}
           handleSelectedRecipe={handleSelectedRecipe}
+          handleDelete={handleDelete}
         />
       );
     } else if (view === 'uploadRecipe') {
