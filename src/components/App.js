@@ -36,14 +36,11 @@ class App extends Component {
     this.setState({ selectedRecipe: recipe });
   }
 
-  //create user
-
-  //delete user
   async handleDelete(id) {
     try {
       await axios.delete(`/api/recipes/${id}`);
       const recipes = (await axios.get('/api/recipes')).data;
-      this.setState({ recipes: recipes });
+      this.setState({ recipes: recipes, selectedRecipe: {} });
     } catch (err) {
       console.log(err);
     }
