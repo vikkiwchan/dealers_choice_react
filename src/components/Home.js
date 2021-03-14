@@ -2,6 +2,10 @@ import React from 'react';
 
 const Home = () => (
   <div>
+    <img
+      src='https://static01.nyt.com/images/2019/02/17/dining/17NORECIPE-PANZANELLA-CHICKEN/merlin_147763899_7052bf35-0ab6-44e9-aad1-58e9f463fa15-articleLarge.jpg'
+      width='350px'
+    />
     <p>
       My day job is recipes. As the food editor of The New York Times and the
       founding editor of NYT Cooking, I spend a lot of time laying out strict
