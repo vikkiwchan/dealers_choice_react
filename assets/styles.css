@@ -21,3 +21,13 @@ td {
   padding-top: 10px;
   padding-right: 20px;
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+form > * {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}

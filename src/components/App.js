@@ -4,6 +4,7 @@ import Nav from './Nav';
 import Home from './Home';
 import Recipes from './Recipes';
 import RecipeDetail from './RecipeDetail';
+import UploadRecipe from './UploadRecipe';
 
 class App extends Component {
   constructor() {
@@ -62,6 +63,8 @@ class App extends Component {
           handleSelectedRecipe={handleSelectedRecipe}
         />
       );
+    } else if (view === 'uploadRecipe') {
+      componentView = <UploadRecipe />;
     } else {
       componentView = <Home />;
     }
