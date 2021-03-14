@@ -11,8 +11,11 @@ const UploadRecipe = () => {
         <label htmlFor='author'>Author</label>
         <input name='author' type='text' />
 
-        <label htmlFor='vegOrMeat'>Use 'vegetarian' or 'meat' for type</label>
-        <input name='vegOrMeat' type='text' />
+        <label htmlFor='vegOrMeat'>Type</label>
+        <select name='vegOrMeat'>
+          <option value='vegetarian'>Vegetarian</option>
+          <option value='meat'>Meat</option>
+        </select>
 
         <label htmlFor='detail'>How-to</label>
         <input name='detail' type='text' />
