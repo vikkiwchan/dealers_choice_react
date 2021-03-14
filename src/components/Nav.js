@@ -2,7 +2,7 @@ import React from 'react';
 
 const Nav = ({ handleClick }) => (
   <nav>
-    <a href='/' onClick={() => handleClick('home')}>
+    <a href='/#' onClick={() => handleClick('home')}>
       Home
     </a>
     <a href='/#all-recipes' onClick={() => handleClick('recipes')}>
