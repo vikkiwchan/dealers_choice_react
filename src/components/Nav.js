@@ -14,7 +14,9 @@ const Nav = ({ handleClick }) => (
     <a href='/#meat' onClick={() => handleClick('meat')}>
       Meat
     </a>
-    <a href='/#addRecipe'>Add a "No-Recipe"</a>
+    <a href='/#addRecipe' onClick={() => handleClick('upload')}>
+      Add a "No-Recipe"
+    </a>
   </nav>
 );
 

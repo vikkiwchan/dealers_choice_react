@@ -1,4 +1,5 @@
 import React from 'react';
+import SingleRecipe from './SingleRecipe';
 
 const Recipes = ({ recipes }) => {
   return (
@@ -12,16 +13,7 @@ const Recipes = ({ recipes }) => {
             <th>Remove</th>
           </tr>
           {recipes.map((recipe) => (
-            <tr key={recipe.id}>
-              <td>{recipe.title}</td>
-              <td>{recipe.vegOrMeat}</td>
-              <td>
-                <a href={`/#${recipe.id}`}>Detail</a>
-              </td>
-              <td>
-                <button>x</button>
-              </td>
-            </tr>
+            <SingleRecipe key={recipe.id} recipe={recipe} />
           ))}
         </tbody>
       </table>

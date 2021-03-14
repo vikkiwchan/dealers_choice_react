@@ -34,9 +34,7 @@ class App extends Component {
     const { handleClick } = this;
 
     let componentView;
-    if (view === 'home') {
-      componentView = <Home />;
-    } else if (view === 'recipes') {
+    if (view === 'recipes') {
       componentView = <Recipes recipes={recipes} />;
     } else if (view === 'vegetarian') {
       componentView = (
@@ -52,7 +50,10 @@ class App extends Component {
           recipes={recipes.filter((recipe) => recipe.vegOrMeat === 'meat')}
         />
       );
+    } else {
+      componentView = <Home />;
     }
+
     return (
       <div id='container'>
         <Nav handleClick={handleClick} />
