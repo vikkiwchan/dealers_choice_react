@@ -6,7 +6,6 @@ const db = new Sequelize(
 );
 const { recipes } = require('./recipes');
 
-// MODEL DEFINITION
 const Recipe = db.define('recipe', {
   title: {
     type: DataTypes.STRING,
