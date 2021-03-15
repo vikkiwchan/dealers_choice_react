@@ -27,7 +27,6 @@ const Recipe = db.define('recipe', {
   },
 });
 
-// HOOK
 Recipe.beforeSave((recipe) => {
   if (!recipe.imgUrl) {
     recipe.imgUrl =

@@ -27,15 +27,15 @@ app.get('/api/recipes', async (req, res, next) => {
 
 app.post('/api/recipes', async (req, res, next) => {
   try {
-    const { title, author, vegOrMeat, detail, imgUrl } = req.body;
+    const { title, author, vegOrMeat, detail, imageUrl } = req.body;
     const recipe = await Recipe.create({
       title: title,
       author: author,
       vegOrMeat: vegOrMeat,
       detail: detail,
-      imgUrl: imgUrl,
+      imgUrl: imageUrl,
     });
-    res.json(recipe);
+    return res.redirect('/');
   } catch (err) {
     console.error(err);
   }
